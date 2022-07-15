@@ -1,0 +1,24 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "install",
+			"path": "examples/react-app-with-threejs",
+			"group": "clean",
+			"problemMatcher": [],
+			"label": "npm: install - examples/react-app-with-threejs",
+			"detail": "install dependencies from package"
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "examples/react-app-with-threejs",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"label": "npm: start - examples/react-app-with-threejs",
+			"detail": "react-scripts start"
+		}
+	]
+}

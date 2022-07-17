@@ -1,9 +1,20 @@
 import { AUPredictor, AvatarPrediction } from '@quarkworks-inc/avatar-webkit'
+import axios from 'axios';
 
 export class AvatarPredictions {
   videoStream?: MediaStream
   predictor?: AUPredictor
   
+    postShapes(postData:AvatarPrediction){
+      //console.log(postData)
+      axios.post('/blendsin', postData, //JSON.stringify(postData),
+      {
+          headers: {
+            'content-type': "application/json"
+          }
+      })
+    }
+
   async start() {
     this.videoStream = await navigator.mediaDevices.getUserMedia({
       audio: false,
@@ -19,7 +30,7 @@ export class AvatarPredictions {
     })
 
     this.predictor.onPredict = ((results: AvatarPrediction) => {
-      console.log(results)
+      this.postShapes(results)
     })
 
     return this.predictor.start({
